@@ -32,8 +32,32 @@
     {{message}}
     <button v-on:click='reverseMessage'>逆转</button>
 </div>
+
+<!--双向绑定-->
+<div id="app6">
+    <p>{{message}}</p>
+    <input v-model="message">
+</div>
+
+<!--计算属性-->
+<div id="app7">
+    <p>{{message}}</p>
+    <p>computed message : {{reversedMessage}}</p>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 <script>
+    var app = new Vue({
+        el:'#app7',
+        data:{
+            message:'hello World'
+        },
+        computed:{
+            reversedMessage:function () {
+                return this.message.split('').reverse().join('')
+            }
+        }
+    })
     var app = new Vue({
         el:'#app5',
         data:{
@@ -75,6 +99,13 @@
                 {text:'python'}
 
             ]
+        }
+    })
+
+    var app6 = new Vue({
+        el:'#app6',
+        data:{
+            message:'hello vue'
         }
     })
 </script>
